@@ -20,6 +20,10 @@ bundle install
 # create the database and run existing migrations
 bundle exec rails db:create db:migrate
 
+# seed the database
+
+bundle exec rails db:seed
+
 # make a new migration
 bundle exec rails g migration <migration-name>
 
@@ -49,7 +53,18 @@ You should see the default rails welcome message. This isn't very exciting, and 
 
 Have a read of chapters 1 to 2.2 of [routing outside in](https://guides.rubyonrails.org/routing.html). Bear in mind that available routes live in `routes.rb`, and our model / controller is for `Scenario`.
 
+Hit me up if you're stuck, but otherwise assuming you're on the scenario route...
+
+You should be looking at a page called Scenarios that contains a table with a few entries.
+
 Before moving on:
+1. Do a search in this code base for the name of these default table entries. How are they already on the page?
+1. Click the link to create a new scenario and follow the steps, where do you end up in the browser? 
+  - What is the name of the view you've landed at?
+  - What correlation do you see between the name of the view and the ScenarioController? 
+  - Do you understand what `resources: scenario` is doing in the `routes.db`
+1. What happens when you delete a scenario?
+1. What happens when you edit a scenario?
 1. Having the landing page be the default ruby landing page isn't useful for a production app. We can make the scenario page our homepage, or our "root" route. Have a read of [routing outside in #using-root](https://guides.rubyonrails.org/routing.html#using-root) and make the necessary changes to the `routes.rb`.
 
 ---
