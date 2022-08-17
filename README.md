@@ -57,14 +57,18 @@ Hit me up if you're stuck, but otherwise assuming you're on the scenario route..
 
 You should be looking at a page called Scenarios that contains a table with a few entries.
 
-Before moving on:
-1. Do a search in this code base for the name of these default table entries. How are they already on the page?
-1. Click the link to create a new scenario and follow the steps, where do you end up in the browser? 
+Make sure you can answer the following before moving on:
+1. Do a search in this code base for the name of these default table entries. How are they already on the page? 
+2. Click the link to create a new scenario and follow the steps, where do you end up in the browser? 
   - What is the name of the view you've landed at?
   - What correlation do you see between the name of the view and the ScenarioController? 
-  - Do you understand what `resources: scenario` is doing in the `routes.db`
-1. What happens when you delete a scenario?
-1. What happens when you edit a scenario?
+  - Do you understand what `resources: scenario` is doing in the `routes.rb`
+3. What happens when you delete a scenario?
+4. What happens when you edit a scenario?
+5. The scenarios that were on the page already had Ids of 1 and 2. You can see this by clicking on the 'show' link next to them, and having a look at the URL. If you deleted these two scenarios, and then reran `bundle exec rails db:seed`, what would the Ids of the new scenario instances be?
+  - If you ran `bundle exec rails db:drop` and then `bundle exec rails db:seed`, what would the Ids be?
+
+Code challenge:
 1. Having the landing page be the default ruby landing page isn't useful for a production app. We can make the scenario page our homepage, or our "root" route. Have a read of [routing outside in #using-root](https://guides.rubyonrails.org/routing.html#using-root) and make the necessary changes to the `routes.rb`.
 
 ---
