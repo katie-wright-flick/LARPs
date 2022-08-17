@@ -45,7 +45,7 @@ Before you start each challenge, do a commit to ensure your git history is clear
 - [Update the Characters Table to allow characters to have Friends](#update-the-characters-table-to-allow-characters-to-have-friends)
 - [Update the Characters Table to allow characters to have Enemies](#update-the-characters-table-to-allow-characters-to-have-enemies)
 
-## Checkingg out the Scenario table
+## Checking out the Scenario table
 
 The Scenario table has been created for you already. Ensure you have completed the start up instructions and then start your rails server and visit localhost:3000 in your browser.
 
@@ -70,20 +70,28 @@ Make sure you can answer the following before moving on:
 
 Code challenge:
 1. Having the landing page be the default ruby landing page isn't useful for a production app. We can make the scenario page our homepage, or our "root" route. Have a read of [routing outside in #using-root](https://guides.rubyonrails.org/routing.html#using-root) and make the necessary changes to the `routes.rb`.
-
+1. Commit your work
 ---
 ## Create the Character table
 
 
-We're going to be using the `generate` command line command, so please read this section [in the rails guides first](https://guides.rubyonrails.org/command_line.html#bin-rails-generate). We'll be using a scaffold in this challenge, so make sure you check out that section.
+We're going to be using the `generate` command line command, so please read this section [in the rails guides first](https://guides.rubyonrails.org/command_line.html#bin-rails-generate). We'll be using a **scaffold** in this challenge, so make sure you check out that section.
 
-This time you will create your first table via the command line. The Character table will have columns called `name` and `job`
+This time you will create your first table via the command line. The Character table will have columns called `name` and `job`.
 
 ```
 bundle exec rails generate scaffold Character name:string job:string
 bundle exec rails db:migrate RAILS_ENV=development
 ```
 
+Can you answer these questions:
+1. What do you think the `scaffold` command does?
+
+Code Challenge:
+1. You'll notice a whole heap of new files have been created. Is there anything you can delete?
+1. Go and check out your new views in the browser. If you're not sure of what routes are available, you can run `bundle exec rails routes` to see all the routes that are currently in the project. [Read more about this command and how to read the results here](https://launchschool.com/books/demystifying_rails/read/routes_and_resources).
+1. Create at least one character.
+2. Commit your changes.
 ---
 ## Create the Items table
 
@@ -105,6 +113,9 @@ bundle exec rails db:migrate RAILS_ENV=development
 ```
 
 https://guides.rubyonrails.org/active_record_migrations.html
+
+Can you answer these questions:
+1. What is the difference between `scaffold` and `migration`?
 
 ---
 ## Update the Character table to have a column called creature_class
