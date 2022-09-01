@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_11_052713) do
+ActiveRecord::Schema.define(version: 2022_08_25_214401) do
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "published"
+    t.boolean "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007fe3de985e08>"
+  end
 
   create_table "scenarios", force: :cascade do |t|
     t.string "name"
