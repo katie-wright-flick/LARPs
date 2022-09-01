@@ -228,6 +228,22 @@ Once you have finished adding your new column, run your migrations and check the
 bundle exec rails db:migrate RAILS_ENV=development
 ```
 
+If you take a look at your views for `Character`, you'll see that that the new `creature_class` enum is missing.
+
+Challenge 1:
+
+- Update your form partial to display the enum values inside a select menu. Rails is using a [helper called form_with](https://guides.rubyonrails.org/form_helpers.html), check out the docs to see how to make a select tag.
+- Update your views so that they display this information about your character.
+
+Challenge 2:
+
+Try and create a `Character` using your new form and select a creature class before submitting. I expect you will get an error about an invalid param. Have a read [about strong parameters](https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters) and update your controller appropriately.
+Test that you can now create a `Character` with a `creature_class`.
+
+---
+
+## Add validations to Characters
+
 ---
 
 ## Update the Scenario Table to contain Characters and Items
