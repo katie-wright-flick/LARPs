@@ -17,8 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :job %>
-    <%= form.text_field :job %>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
+  </div>
+
+    <div class="field">
+    <%= form.label :published %>
+    <%= form.check_box :published %>
   </div>
 
   <div class="actions">
