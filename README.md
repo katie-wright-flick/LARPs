@@ -230,12 +230,12 @@ bundle exec rails db:migrate RAILS_ENV=development
 
 If you take a look at your views for `Character`, you'll see that that the new `creature_class` enum is missing.
 
-Challenge 1:
+### Challenge 1:
 
 - Update your form partial to display the enum values inside a select menu. Rails is using a [helper called form_with](https://guides.rubyonrails.org/form_helpers.html), check out the docs to see how to make a select tag.
 - Update your views so that they display this information about your character.
 
-Challenge 2:
+### Challenge 2:
 
 Try and create a `Character` using your new form and select a creature class before submitting. I expect you will get an error about an invalid param. Have a read [about strong parameters](https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters) and update your controller appropriately.
 Test that you can now create a `Character` with a `creature_class`.
@@ -243,6 +243,36 @@ Test that you can now create a `Character` with a `creature_class`.
 ---
 
 ## Add validations to Characters
+
+You might have noticed by now that it is possible to create a scenario, character or item with an empty form.
+
+In reality, we definitely don't want to give users the ability to do this and clog up our data base with empty entries. We can prevent this during the [migration stage by stating our columns cannot take a null value](https://edgeguides.rubyonrails.org/active_record_migrations.html#creating-a-table).
+
+You can also add validations to your model files.
+
+### Challenge:
+
+Check out the documentation on [validation helpers](https://guides.rubyonrails.org/active_record_validations.html#validation-helpers) and impliment the following validations:
+
+Characters
+
+- Must have a name
+- Must have a name longer than one character
+- Must have a creature_class
+- Must have a job
+- Must have a job longer than four characters
+
+Scenarios
+
+- Must have more than 4 players
+- Must have a name
+- Must have a location
+
+Items
+
+- Must have a quantity of at least 1
+- Must have a name
+- Must have a description
 
 ---
 
