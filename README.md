@@ -276,7 +276,19 @@ Items
 
 ---
 
-## Update the Scenario Table to contain Characters and Items
+## Scenario table has relationships with Characters and Items
+
+We now have three tables in our databases that exist in isolation from each other. For a production app to work as expected, we need to form relationships between this data. Have a read through [association basics](https://guides.rubyonrails.org/association_basics.html), it's long so if you can't read it in one go, pay attention to the belongs_to and has_many sections.
+
+For this challenge, implement the following relationships:
+
+A Scenario has many characters
+A Charactor belongs to a Scenario
+A Scenario has many Items
+An Item belongs to a Scenario
+
+You will need to edit the Scenario, Character, and Item model files
+You will need two migrations to establish the relationships between Scenarios and Characters and Scenarios and Items
 
 ---
 
