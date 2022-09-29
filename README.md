@@ -280,6 +280,50 @@ Items
 
 We now have three tables in our databases that exist in isolation from each other. For a production app to work as expected, we need to form relationships between this data. Have a read through [association basics](https://guides.rubyonrails.org/association_basics.html), it's long so if you can't read it in one go, pay attention to the belongs_to and has_many sections.
 
+To access related models, the syntax is something like:
+
+```ruby
+class Author < ApplicationController
+  has_many :books
+end
+
+class Book < ApplicationController
+  belongs_to :author
+end
+
+# authors_controller.rb
+...
+# Find an author with the id '1', and return all books associated with this specific author.
+books = Author.find(1).books
+```
+
+Note: Making your controller variables [instance variables](https://www.rubyguides.com/2019/07/ruby-instance-variables/) makes them available in your views, e.g.
+
+```ruby
+# authors_controller.rb
+...
+def show
+  # <Author id: 1, name: 'Katie' ... >
+  @author = Author.find(1)
+end
+
+def edit
+  author = Author.find(1)
+end
+
+# app/views/author/show.html.erb
+
+<p><%= @author.name %></p>
+# => Katie
+
+# app/views/author/edit.html.erb
+
+<p><%= @author.name %></p>
+# => Big ol' error will throw as @author is not defined
+<p><%= author.name %></p>
+# => Maybe also throws an error, maybe just returns nil
+```
+
 For this challenge, implement the following relationships:
 
 A Scenario has many characters
@@ -291,6 +335,25 @@ You will need to edit the Scenario, Character, and Item model files
 You will need two migrations to establish the relationships between Scenarios and Characters and Scenarios and Items
 
 ---
+
+## Update the Scenario form to allow adding of existing Characters and Items
+
+Challenge 1:
+Update the Scenario form so that you can associate Characters and Items with a Scenario at the create _and_ update steps. Have a read about [the fields_for helper](https://guides.rubyonrails.org/form_helpers.html#the-fields-for-helper).
+You will need to edit \_form.html.erb for Scenario:
+
+- There will be a checkbox list that displays all Characters
+- There will be a checkbox list that displays all Items
+
+Clicking to 'create' or 'update' will throw an error at this point.
+
+Challenge 2:
+Update the Scenario controller to accept these new relationships. This challenge isn't quite ready, but see if you can have a go at getting this working based off of the error you'll be getting from the above challenge.
+
+Challenge 3:
+
+- Update the Scenario form so that any Characters or Items that are already associated with the Scenario are displayed
+- For Characters and Items that are already associated with the Scenario, their checkbox should be prechecked.
 
 ## Update the Characters Table to allow characters to have Friends
 
