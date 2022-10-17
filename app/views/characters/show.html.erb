@@ -10,5 +10,10 @@
   <%= @character.job %>
 </p>
 
+<p>
+  <strong>Class:</strong>
+  <%= @character.creature_class %>
+</p>
+
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

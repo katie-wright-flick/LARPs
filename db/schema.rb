@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_062317) do
     t.string "job"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "creature"
+    t.integer "creature_class"
   end
 
   create_table "items", force: :cascade do |t|

@@ -21,6 +21,11 @@
     <%= form.text_field :job %>
   </div>
 
+  <div class="field">
+    <%= form.label :creature_class %>
+    <%= form.select :creature_class, Character.creature_classes.keys.to_a, id: :creature_class %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
