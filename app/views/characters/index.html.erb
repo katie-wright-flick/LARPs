@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Job</th>
       <th>Class</th>
+      <th>Scenario</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,11 @@
         <td><%= character.name %></td>
         <td><%= character.job %></td>
         <td><%= character.creature_class %></td>
+        <td>
+          <% if character.scenario %>
+            <%= link_to character.scenario[:name], scenario_path(character.scenario[:id]) %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', character %></td>
         <td><%= link_to 'Edit', edit_character_path(character) %></td>
         <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>

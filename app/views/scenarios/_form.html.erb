@@ -35,7 +35,12 @@
     <%= form.label :starts_at %>
     <%= form.datetime_select :starts_at %>
   </div>
-
+  
+  <div class="field">
+    <%= form.label :character_ids, "Characters" %>
+    <%= form.collection_check_boxes :character_ids, Character.all, :id, :name %>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <nav>
+      <ul class="nav">
+        <li class="nav_item <%= active_class(scenarios_path) %>">
+          <%= link_to "Scenarios", scenarios_path %>
+        </li>
+        <li class="nav_item <%= active_class(characters_path) %>"><%= link_to "Characters", characters_path %></li>
+        <li class="nav_item <%= active_class(items_path) %>"><%= link_to "Items", items_path %></li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

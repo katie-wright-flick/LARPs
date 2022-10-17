@@ -7,5 +7,5 @@ class Character < ApplicationRecord
 
   validates :job, length: { minimum: 4 }
   validates :name, length: { minimum: 1 }
-
+  belongs_to :scenario, optional: true
 end

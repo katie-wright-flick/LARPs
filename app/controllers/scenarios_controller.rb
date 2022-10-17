@@ -34,8 +34,7 @@ class ScenariosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /scenarios/1 or /scenarios/1.json
-  def update
+  def update    
     respond_to do |format|
       if @scenario.update(scenario_params)
         format.html { redirect_to scenario_url(@scenario), notice: "Scenario was successfully updated." }
@@ -47,7 +46,6 @@ class ScenariosController < ApplicationController
     end
   end
 
-  # DELETE /scenarios/1 or /scenarios/1.json
   def destroy
     @scenario.destroy
 
@@ -65,6 +63,6 @@ class ScenariosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def scenario_params
-      params.require(:scenario).permit(:name, :location, :active, :players, :starts_at)
+      params.require(:scenario).permit(:name, :location, :active, :players, :starts_at,  character_ids:[])
     end
 end
