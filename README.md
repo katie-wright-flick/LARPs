@@ -228,11 +228,132 @@ Once you have finished adding your new column, run your migrations and check the
 bundle exec rails db:migrate RAILS_ENV=development
 ```
 
+If you take a look at your views for `Character`, you'll see that that the new `creature_class` enum is missing.
+
+### Challenge 1:
+
+- Update your form partial to display the enum values inside a select menu. Rails is using a [helper called form_with](https://guides.rubyonrails.org/form_helpers.html), check out the docs to see how to make a select tag.
+- Update your views so that they display this information about your character.
+
+### Challenge 2:
+
+Try and create a `Character` using your new form and select a creature class before submitting. I expect you will get an error about an invalid param. Have a read [about strong parameters](https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters) and update your controller appropriately.
+Test that you can now create a `Character` with a `creature_class`.
+
 ---
 
-## Update the Scenario Table to contain Characters and Items
+## Add validations to Characters
+
+You might have noticed by now that it is possible to create a scenario, character or item with an empty form.
+
+In reality, we definitely don't want to give users the ability to do this and clog up our data base with empty entries. We can prevent this during the [migration stage by stating our columns cannot take a null value](https://edgeguides.rubyonrails.org/active_record_migrations.html#creating-a-table).
+
+You can also add validations to your model files.
+
+### Challenge:
+
+Check out the documentation on [validation helpers](https://guides.rubyonrails.org/active_record_validations.html#validation-helpers) and impliment the following validations:
+
+Characters
+
+- Must have a name
+- Must have a name longer than one character
+- Must have a creature_class
+- Must have a job
+- Must have a job longer than four characters
+
+Scenarios
+
+- Must have more than 4 players
+- Must have a name
+- Must have a location
+
+Items
+
+- Must have a quantity of at least 1
+- Must have a name
+- Must have a description
 
 ---
+
+## Scenario table has relationships with Characters and Items
+
+We now have three tables in our databases that exist in isolation from each other. For a production app to work as expected, we need to form relationships between this data. Have a read through [association basics](https://guides.rubyonrails.org/association_basics.html), it's long so if you can't read it in one go, pay attention to the belongs_to and has_many sections.
+
+To access related models, the syntax is something like:
+
+```ruby
+class Author < ApplicationController
+  has_many :books
+end
+
+class Book < ApplicationController
+  belongs_to :author
+end
+
+# authors_controller.rb
+...
+# Find an author with the id '1', and return all books associated with this specific author.
+books = Author.find(1).books
+```
+
+Note: Making your controller variables [instance variables](https://www.rubyguides.com/2019/07/ruby-instance-variables/) makes them available in your views, e.g.
+
+```ruby
+# authors_controller.rb
+...
+def show
+  # <Author id: 1, name: 'Katie' ... >
+  @author = Author.find(1)
+end
+
+def edit
+  author = Author.find(1)
+end
+
+# app/views/author/show.html.erb
+
+<p><%= @author.name %></p>
+# => Katie
+
+# app/views/author/edit.html.erb
+
+<p><%= @author.name %></p>
+# => Big ol' error will throw as @author is not defined
+<p><%= author.name %></p>
+# => Maybe also throws an error, maybe just returns nil
+```
+
+For this challenge, implement the following relationships:
+
+A Scenario has many characters
+A Charactor belongs to a Scenario
+A Scenario has many Items
+An Item belongs to a Scenario
+
+You will need to edit the Scenario, Character, and Item model files
+You will need two migrations to establish the relationships between Scenarios and Characters and Scenarios and Items
+
+---
+
+## Update the Scenario form to allow adding of existing Characters and Items
+
+Challenge 1:
+Update the Scenario form so that you can associate Characters and Items with a Scenario at the create _and_ update steps. Have a read about [the fields_for helper](https://guides.rubyonrails.org/form_helpers.html#the-fields-for-helper).
+You will need to edit \_form.html.erb for Scenario:
+
+- There will be a checkbox list that displays all Characters
+- There will be a checkbox list that displays all Items
+
+Clicking to 'create' or 'update' will throw an error at this point.
+
+Challenge 2:
+Update the Scenario controller to accept these new relationships. This challenge isn't quite ready, but see if you can have a go at getting this working based off of the error you'll be getting from the above challenge.
+
+Challenge 3:
+
+- Update the Scenario form so that any Characters or Items that are already associated with the Scenario are displayed
+- For Characters and Items that are already associated with the Scenario, their checkbox should be prechecked.
 
 ## Update the Characters Table to allow characters to have Friends
 
