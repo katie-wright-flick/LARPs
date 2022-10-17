@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_062317) do
+ActiveRecord::Schema.define(version: 2022_10_17_072620) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2022_10_17_062317) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "creature_class"
+    t.integer "scenario_id"
+    t.index ["scenario_id"], name: "index_characters_on_scenario_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(version: 2022_10_17_062317) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "scenario_id"
+    t.index ["scenario_id"], name: "index_items_on_scenario_id"
   end
 
   create_table "scenarios", force: :cascade do |t|
@@ -39,4 +43,6 @@ ActiveRecord::Schema.define(version: 2022_10_17_062317) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "characters", "scenarios"
+  add_foreign_key "items", "scenarios"
 end
