@@ -63,3 +63,82 @@ div.actions {
 
 label {
   display: block; }
+
+.active {
+  font-weight: bold;
+}
+
+.nav, .list {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  color: black;
+}
+
+.nav_item a {
+  color: black;
+}
+
+tbody tr:nth-child(odd) {
+  background: lightblue;
+}
+
+tbody tr td {
+  padding: 7px 20px;
+}
+
+thead th {
+  text-align: left;
+}
+
+.orc {
+  background: green;
+  &:hover {
+    background-color: rgb(1, 68, 1)
+  }
+}
+.elf {
+  background-color: violet;
+  &:hover {
+    background-color: rgb(154, 82, 154)
+  }
+}
+.human {
+  background-color: cornflowerblue;
+  &:hover {
+    background-color: rgb(64, 95, 151)
+  }
+}
+.ent {
+  background: goldenrod;
+  &:hover {
+    background-color: rgb(132, 100, 18);
+  }
+}
+.wizard {
+  background-color: darkmagenta;
+  &:hover {
+    background-color: rgb(86, 0, 86);
+  }
+}
+
+.list_item {
+  padding: 7px 20px;
+  font-weight: bold;
+  position: relative;
+  a {
+    color: white;
+    &::after {
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right:0;
+      content: '';
+    } 
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
